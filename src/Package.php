@@ -130,11 +130,16 @@ class Package
         $carrier_code  = null;
         $provider_code = null;
 
-        if (preg_match('/^[0-9]{2}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
+        
+        if (preg_match('/^[0-9]{3}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
+            $carrier_code = Carrier::CODE_BLUE_DART;
+        }elseif (preg_match('/^[0-9]{2}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
             $carrier_code = Carrier::CODE_DHL;
-        } elseif (preg_match('/^[1-9]{4}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
+        } elseif (preg_match('/^[1-9]{4}[0-9]{4}[0-9]{5}$/', $tracking_code, $matches)) {
+            $carrier_code = Carrier::CODE_DELHIVERY;
+        }elseif (preg_match('/^[1-9]{4}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
             $carrier_code = Carrier::CODE_FEDEX;
-        } elseif (preg_match('/^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i', $tracking_code)) {
+        }elseif (preg_match('/^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i', $tracking_code)) {
             $carrier_code = Carrier::CODE_UPS;
         } elseif (preg_match('/^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$/', $tracking_code)) {
             $carrier_code = Carrier::CODE_USPS;
@@ -161,3 +166,4 @@ class Package
         return $this;
     }
 }
+

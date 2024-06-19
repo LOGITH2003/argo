@@ -13,9 +13,20 @@ class Carrier
     const CODE_DHL = 'dhl';
 
     /**
+     * Blue Dart carrier code.
+     */
+    const CODE_BLUE_DART = 'blue_dart';
+
+    /**
      * FedEx carrier code.
      */
     const CODE_FEDEX = 'fedex';
+
+    /**
+     * Delhivery carrier code.
+     */
+    const CODE_DELHIVERY = 'Delhivery';
+
 
     /**
      * UPS carrier code.
@@ -57,8 +68,10 @@ class Carrier
      * @var array
      */
     private static $carriers = [
-        self::CODE_DHL => 'DHL',
+        self::CODE_BLUE_DART => 'BlueDart',
+        self::CODE_DHL => 'DHL',        
         self::CODE_FEDEX => 'FedEx',
+        self::CODE_DELHIVERY => 'Delhivery',
         self::CODE_LASER_SHIP => 'LaserShip',
         self::CODE_ONTRAC => 'OnTrac',
         self::CODE_UPS => 'UPS',
